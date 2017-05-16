@@ -9,22 +9,20 @@ export default class TweetWall extends React.Component {
     };
   }
 
-  // TODO: componentWillMount()
   componentWillMount() {
     this.setState({
       tweets: this.props.newTweets
     })
   }
 
-  // TODO: shouldComponentUpdate()
   shouldComponentUpdate(nextProps, nextState) {
-    return (nextProps.newTweets > 0)
+    return (nextProps.newTweets.length > 0)
   }
 
-  // TODO: componentWillReceiveProps()
   componentWillReceiveProps(nextProps) {
     this.setState({
-      tweets: nextProps.newTweets.concat(this.state.tweets)
+      // tweets: nextProps.newTweets.concat(this.state.tweets)
+      tweets: [...nextProps.newTweets, ...this.state.tweets]
     })
   }
 
